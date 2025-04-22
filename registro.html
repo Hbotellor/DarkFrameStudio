@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        background: #b92b27;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    .formulario {
+    font-family: 'open sans';
+    background: #f6f2e6;
+    padding: 30px;
+    border-radius: 10px;
+    width: 350px;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+.formulario h2 {
+    color: #080808;
+    margin-bottom: 20px;
+}
+
+.formulario label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b67c5d;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.formulario .login-btn {
+    display: block;
+    width: 100%;
+    background: #e0608b;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.formulario .login-btn:hover {
+    background: #b65db3;
+    transform: scale(1.05);
+}
+
+
+.formulario p {
+    margin-top: 15px;
+}
+
+.formulario .registro {
+    color: #e0608b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.formulario .registro:hover {
+    text-decoration: underline;
+}
+
+.register-link{
+    text-decoration: none;
+    color: #b65db3;
+}
+
+</style>
+<body>
+    <div class="formulario">
+        <h2>Registro</h2>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirmar contraseña</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="login-btn">Registrarme</button>
+        </form>
+        <a href="inicioSesion.html" class="register-link">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+</body>
+</html>

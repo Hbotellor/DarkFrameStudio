@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Frame Studio</title>
+    <link rel="icon" href="Media/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><!-- Font Awesome (para el icono de usuario) -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <div class="user-menu">
+          <a href="#" class="login-icon" title="Usuario">
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="inicioSesion.html">Iniciar sesión
+                <i class="fa-solid fa-user fa-bounce" style="color: #000000;"></i>
+            </a>
+            <a href="registro.html">Registrarse
+                <i class="fa-solid fa-user-plus fa-bounce" style="color: #000000;"></i>
+            </a>
+          </div>
+        </div>
+      </header>
+
+    <section class="menu">
+        <div class="navegación">
+            <img src="Media/logo empresa.png" class="logo"/>
+            <nav>
+                <a href="index.html">INICIO</a>
+                <a href="#">ACERCA DE</a>
+                <a href="nuestroequipo.html">NUESTRO EQUIPO</a>
+                <a href="#">SERVICIOS</a>
+                <a href="#">CONTACTO</a>
+            </nav>
+        </div>
+    </section>
+    <hr class="divisor"> <!-- Separación de linea -->
+
+<div class="equipo">
+    <div class="card">
+        <div class="profile-pic" onclick="cambiarImagen(this)">
+        <img src="media_team/avatar1.jpg" alt="Lider del proyecto">
+        </div>
+        <h3 class="texto-link">
+        <a href="liderproyecto.html">Henry Botello</a></h3>
+        <p>Lider del proyecto</p>
+    </div>
+
+    <div class="card">
+        <div class="profile-pic" onclick="cambiarImagen(this)">
+            <img src="media_team/avatar2.png" alt="Desarrollador">
+        </div>
+        <h3 class="texto-link">
+            <a href="desarrollador1proyecto.html">Kevin Murcia</a></h3>
+        <p>Desarrollador</p>
+    </div>
+
+    <div class="card">
+        <div class="profile-pic" onclick="cambiarImagen(this)">
+            <img src="media_team/avatar3.jpg" alt="Desarrollador">
+        </div>
+        <h3 class="texto-link">
+            <a href="programador2.html" >Andres Felipe Correa</a></h3>
+        <p>Desarrollador</p>
+    </div>
+
+    <div class="card" style="grid-column: 1/2;">
+        <div class="profile-pic" onclick="cambiarImagen(this)">
+            <img src="media_team/avatar4.png" alt="Diseñadora">
+        </div>
+        <h3 class="texto-link">
+            <a href= "diseñadora.html">Daniela Otalvaro</a></h3>
+        <p>Diseñadora</p>
+    </div>
+
+    <div class="card" style="grid-column: 3/3;"> 
+        <div class="profile-pic" onclick="cambiarImagen(this)">
+            <img src="media_team/avatar5.png" alt="Tester">
+        </div>
+        <h3 class="texto-link">
+        <a href="testerproyecto.html">Camila Castillo</a></h3>
+        <p>Tester</p>
+    </div>
+
+    <script>
+        function cambiarImagen(el) {
+          const img = el.querySelector('img');
+          const srcActual = img.src;
+          
+          // Ruta del avatar y de la foto
+          const avatar = srcActual.includes("foto") ? srcActual.replace("foto", "avatar") : srcActual;
+          const foto = srcActual.includes("avatar") ? srcActual.replace("avatar", "foto") : srcActual;
+    
+          // Animación de opacidad para hacer el cambio más suave
+          img.style.opacity = 0;  // Hacemos la imagen invisible temporalmente
+          setTimeout(() => {
+            // Cambiar la imagen a la otra
+            img.src = img.src.includes("avatar") ? foto : avatar;
+            img.style.opacity = 1;  // Vuelve a hacer la imagen visible
+          }, 300);  // 300ms para la animación de opacidad
+        }
+      </script>
+</div>
+<footer>
+    <div class="contenedor-footer">
+        <div class="contenedor-final">
+            <h4>Teléfono</h4>
+            <p>321 1234567</p>
+        </div>
+
+        <div class="contenedor-final">
+            <h4>Email</h4>
+            <p>support@darkframestudio.com</p>
+        </div>
+
+        <div class="contenedor-final">
+            <h4>Locación</h4>
+            <p>Colombia</p>
+        </div>
+    </div>
+    <h2 class="titulo-final">&copy;2025 Dark Frame Studio. Todos los derechos reservados</h2>
+</footer>
+</body>
+</html>

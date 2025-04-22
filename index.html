@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Frame Studio</title>
+    <link rel="icon" href="Media/LOGO.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Font Awesome (para el icono de usuario) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        background-color: white;
+      }
+
+      header {
+        background-color: black;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: flex-end; /* 💡 Alineación icono a la derecha*/
+      }
+
+      .login-icon {
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease; /* 💡 Transición suave */
+        margin-right: 100px;
+      }
+
+      .login-icon:hover {
+        color: #af20d3; /* Cambia el color al pasar el mouse */
+        transform: scale(1.2); /* Se agranda ligeramente */
+      }
+
+      .contenedor {
+        padding: 60px 0;
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        overflow: hidden;
+      }
+
+      .titulo {
+        color: black;
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      /*Sección Menú*/
+      .menu {
+        padding: 30px 0;
+        text-align: center;
+        margin: 0px;
+      }
+
+      .frase {
+        width: 100%;
+        height: 800px;
+        background: #ff0099; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #493240, #ff0099);
+        background: linear-gradient(to right, #4932408a, #ff00997e),
+          url(Media/imagen\ promocional.png);
+        background-attachment: fixed;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .frase h1 {
+        font-size: 40px;
+        color: white;
+      }
+
+      .frase h2 {
+        font-size: 20px;
+        font-weight: 300;
+        color: white;
+      }
+
+      nav {
+        padding: 5px 5px 0 0;
+      }
+
+      nav > a {
+        color: black;
+        font-weight: 300;
+        text-decoration: none;
+        gap: 10px;
+        transition: color 0.3s;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 40px;
+      }
+
+      nav > a:hover {
+        color: purple;
+        transform: scale(1.1);
+      }
+
+      .logo {
+        height: 170px;
+        width: auto;
+        margin-left: 50px;
+      }
+
+      .navegación {
+        display: flex;
+        justify-content: space-between; /* Logo a la izquierda y nav a la derecha */
+        align-items: center; /* Alinea los elementos verticalmente */
+        height: 40px;
+      }
+
+      .wave {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      /*sección de juegos destacados*/
+
+      .juegos {
+        background: white;
+      }
+
+      .juegos > .titulo {
+        padding-top: 0%;
+      }
+
+      .galeria-port {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+
+      .imagen-port {
+        width: 24%;
+        margin-bottom: 10px;
+
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 0 6px rgb(0, 0, 0, 5);
+      }
+
+      .imagen-port > img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      .hover-galeria {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        transform: scale(0);
+        background: rgba(87, 44, 87, 0.603);
+        transition: transform 0.5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .hover-galeria img {
+        width: 50%;
+        color: black;
+      }
+
+      .hover-galeria p {
+        color: black;
+      }
+
+      .imagen-port:hover .hover-galeria {
+        transform: scale(1);
+      }
+
+      /*Compatibilidad de nuestros dispositivos*/
+
+      .contenedor-compatibilidad {
+        background: radial-gradient(circle at center, #4e4d4d9c, #4e4c4c);
+
+        padding: 80px 20px;
+        text-align: center;
+      }
+
+      .titulo {
+        font-size: 3rem;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 50px;
+        text-shadow: 0 0 12px rgba(192, 132, 252, 0.6); /* Morado claro */
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+        justify-content: center;
+      }
+
+      .card {
+        background: #212121;
+        border-radius: 20px;
+        padding: 40px 20px;
+        box-shadow: 0 0 20px rgba(192, 132, 252, 0.2); /* Morado claro */
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 30px rgba(192, 132, 252, 0.5); /* Morado claro al pasar el mouse */
+      }
+
+      .card i {
+        font-size: 60px;
+        color: #ffffff; /* Color morado claro para los íconos */
+        margin-bottom: 20px;
+        animation: bounce 2.5s infinite;
+      }
+
+      .contenido-texto h4,
+      .contenido.texto h4 {
+        font-size: 1.5rem;
+        color: white;
+        margin-top: 10px;
+        font-weight: 600;
+      }
+
+      /* Animación bounce más suave */
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      footer {
+        background: #000000;
+        padding: 60px 0 30px 0;
+        overflow: hidden;
+        margin: auto;
+      }
+
+      .contenedor-footer {
+        display: flex;
+        background: #000000;
+        width: 90%;
+        justify-content: space-evenly;
+        margin: auto;
+        padding-bottom: 50px;
+        border-bottom: 2px solid #dbd6d6; /* ejemplo de borde negro */
+      }
+
+      .contenedor-final {
+        text-align: center;
+      }
+
+      .contenedor-final h4 {
+        color: white;
+        border-bottom: 3px solid #af20d3;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+      }
+
+      .contenedor-final p {
+        color: #ffffff;
+      }
+
+      .titulo-final {
+        text-align: center;
+        font-size: 24px;
+        margin: 20px 0 0;
+        color: #9e9797;
+      }
+
+      .separador-onda {
+        position: relative;
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .separador-onda svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 100px;
+      }
+
+      /* Estilos del icono */
+      .user-menu {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* 🔥 El menú está OCULTO al principio */
+      .dropdown-menu {
+        display: none; /* <- ESTO OCULTA */
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: white;
+        padding: 15px 20px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 300px;
+        max-width: 90vw;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      /* El menú se muestra SOLO al pasar el mouse */
+      .user-menu:hover .dropdown-menu {
+        display: flex; /* <- AQUÍ aparece */
+      }
+
+      /* Estilos de los links */
+      .dropdown-menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dropdown-menu a:hover {
+        color: #29064d;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="user-menu">
+        <a href="#" class="login-icon" title="Usuario">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="inicioSesion.html"
+            >Iniciar sesión
+            <i class="fa-solid fa-user fa-bounce" style="color: #000000"></i>
+          </a>
+          <a href="registro.html"
+            >Registrarse
+            <i
+              class="fa-solid fa-user-plus fa-bounce"
+              style="color: #000000"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="menu">
+      <div class="navegación">
+        <img src="Media/logo empresa.png" class="logo" />
+        <nav>
+          <a href="index.html">INICIO</a>
+          <a href="acerca de.html">ACERCA DE</a>
+          <a href="nuestroequipo.html">NUESTRO EQUIPO</a>
+          <a href="#">SERVICIOS</a>
+          <a href="#">CONTACTO</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="frase">
+      <h1>
+        "No hacemos juegos para todos, hacemos juegos para los que sienten que
+        el juego es todo"
+      </h1>
+      <h2>Diviertete! y se parte de esta experiencia</h2>
+      <div class="wave" style="height: 150px; overflow: hidden">
+        <svg
+          viewBox="0 0 500 150"
+          preserveAspectRatio="none"
+          style="height: 100%; width: 100%"
+        >
+          <path
+            d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+            style="stroke: none; fill: rgb(255, 255, 255)"
+          ></path>
+        </svg>
+      </div>
+    </section>
+    <!--Aqui se agregó el efecto de ola para separar el main-->
+
+    <!--Secciones-->
+    <main>
+      <!-- Sección juegos destacados -->
+      <section class="juegos">
+        <div class="contenedor">
+          <h2 class="titulo">Juegos destacados</h2>
+          <div class="galeria-port">
+            <div class="imagen-port">
+              <img src="Media/Galeria/Imagen 1.png" />
+              <div class="hover-galeria">
+                <img src="Media/pc icono.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/Imagen 2.png" />
+              <div class="hover-galeria">
+                <img src="Media/pc icono.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/Imagen 3.png" />
+              <div class="hover-galeria">
+                <img src="Media/pc icono.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/Imagen 4.png" />
+              <div class="hover-galeria">
+                <img src="Media/pc icono.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/imagen 5.png" />
+              <div class="hover-galeria">
+                <img src="Media/dispositivos moviles.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/imagen 6.png" />
+              <div class="hover-galeria">
+                <img src="Media/dispositivos moviles.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/imagen 7.png" />
+              <div class="hover-galeria">
+                <img src="Media/dispositivos moviles.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+
+            <div class="imagen-port">
+              <img src="Media/Galeria/imagen 8.png" />
+              <div class="hover-galeria">
+                <img src="Media/dispositivos moviles.png" />
+                <p>Nuestro trabajo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Sección compatibilidad de Nuestros juegos-->
+      <section class="contenedor-compatibilidad">
+        <h2 class="titulo">Compatibilidad de nuestros juegos</h2>
+        <div class="cards">
+          <div class="card">
+            <i class="fa-brands fa-windows"></i>
+            <div class="contenido-texto">
+              <h4 class="titulo-cards">Windows</h4>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-brands fa-xbox"></i>
+            <div class="contenido-texto">
+              <h4 class="titulo-cards">Xbox y Play Station</h4>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-brands fa-apple"></i>
+            <div class="contenido-texto">
+              <h4 class="titulo-cards">macOS y App Store</h4>
+            </div>
+          </div>
+
+          <div class="card">
+            <i class="fa-brands fa-google-play"></i>
+            <div class="contenido-texto">
+              <h4 class="titulo-cards">Google Play Store</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="separador-onda">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z"
+          style="fill: #000000"
+        ></path>
+      </svg>
+    </div>
+    <footer>
+      <div class="contenedor-footer">
+        <div class="contenedor-final">
+          <h4>Teléfono</h4>
+          <p>321 1234567</p>
+        </div>
+
+        <div class="contenedor-final">
+          <h4>Email</h4>
+          <p>support@darkframestudio.com</p>
+        </div>
+
+        <div class="contenedor-final">
+          <h4>Locación</h4>
+          <p>Colombia</p>
+        </div>
+      </div>
+      <h2 class="titulo-final">&copy;Dark Frame Studio</h2>
+    </footer>
+  </body>
+</html>
